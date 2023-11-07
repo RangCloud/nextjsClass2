@@ -30,3 +30,5 @@ function ProductCard({id, name, price, picture}){
         </div>
     )
 }
+
+export default ProductCard;
