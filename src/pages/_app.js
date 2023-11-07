@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
     </Head>
     <CartContext.Provider value={{items, setItems}}>
       <Navbar/>
-      <div className=''>
+      <div className='w-9/12 m-auto pt-10'>
         <Component {...pageProps} />
       </div>
     </CartContext.Provider>

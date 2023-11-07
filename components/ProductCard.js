@@ -1,4 +1,4 @@
-import {useState, useContext} from "react";
+import {useContext} from "react";
 import cartContext from '../components/cartContext';
 
 function ProductCard({id, name, price, picture}){
@@ -10,22 +10,24 @@ function ProductCard({id, name, price, picture}){
             setItems({...items, [id]: newItemAmount})
         }
         else if(action === 'dec'){
-            setItems({items, [id]: items[id] - 1})
+            if(items?.[id]>0){
+            setItems({...items, [id]: items[id] - 1})
         }
     }
+    }
     return(
-        <div className="">
-            <div className="">
-                <img src={picture} alt={name} className=""/>
+        <div className="bg-gray-200 p-6 rounded-md">
+            <div className="relative 100% h-50 m-auto">
+                <img src={picture} alt={name} className="object-cover"/>
             </div>
-            <div className="">
-                <div>{name}</div>
-                <div>${price} per kg</div>
+            <div className="flex justify-between mt-4">
+                <div className="font-bold text-1">{name}</div>
+                <div className="font-bold text-1 text-gray-500">${price} per kg</div>
             </div>
-            <div className="">
-                <div onClick={()=>{handleAmount('dec')}} className="" disabled={productAmount === 0}>-</div>
-                <div className="">{productAmount}</div>
-                <div onClick={()=>{handleAmount('inc')}} className="">+</div>
+            <div className="flex justify-between mt-4 w-2/4 m-auto">
+                <div onClick={()=>{handleAmount('dec')}} className="pl-2 pr-2 rounded-md text-white bg-red-400" disabled={productAmount === 0}>-</div>
+                <div className="font-bold">{productAmount}</div>
+                <div onClick={()=>{handleAmount('inc')}} className="pl-2 pr-2 rounded-md text-white bg-green-400">+</div>
             </div>
         </div>
     )
