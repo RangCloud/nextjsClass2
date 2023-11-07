@@ -21,7 +21,7 @@ function Cart(){
                 {
                     amounts.map(
                         ({item, amount} ) => (
-                            <div key={item.id}>x{amount} {item.name} (${amount*item.price}) </div>
+                            <div key={item.id}>{item.name} {amount}개 (${amount*item.price}) </div>
                         )
                     )
                 }
